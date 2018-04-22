@@ -3,6 +3,7 @@
 
 		<% with Inspection %>
 			<h1>Unit $Unit.ID</h1>
+			<h3>$InspectionDate</h3>
 			<% if $Member.currentUser.inGroup('Administrators')  %>
 			<div style="text-align:right"><a href="{$Top.Link}pdf/$ID">pdf</a><a href="$EditLink">Edit</a> |
 			<a href="$DeleteLink">Delete</a>

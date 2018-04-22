@@ -64,7 +64,7 @@ class InspectionListPage_Controller extends Page_Controller{
     $dompdf = new Dompdf();
     $dompdf->loadHTML($this->customise(new ArrayData(array(
       'Inspection' => $viewDetails
-    )))->renderWith("ViewTemplate"));
+    )))->renderWith("pdfTemplate"));
     $dompdf->setPaper('A4', 'landscape');
     $dompdf->render();
     return $dompdf->stream();

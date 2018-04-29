@@ -60,6 +60,8 @@
 				<% if $UploadedPics %>
 					<% loop $UploadedPics %>
 						<img src="../../$SetRatioSize(400,500).URL">
+						
+						$URL
 					<% end_loop %>
 				<% end_if %>
 				<% if $DamageRepair %><p>Damage & Repair: $DamageRepair</p><% end_if %>

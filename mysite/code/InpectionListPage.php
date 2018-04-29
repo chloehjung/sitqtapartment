@@ -17,6 +17,7 @@ class InspectionListPage_Controller extends Page_Controller{
     'unit',
     'pdf'
   );
+
   public function GetAllInspections($unit = null){
     $id = $this->request->Param('ID');
     if ($id !=null){
@@ -72,7 +73,13 @@ class InspectionListPage_Controller extends Page_Controller{
     $dompdf->setPaper('A4', 'landscape');
     $dompdf->render();
     return $dompdf->stream();
+  }
 
+  public function mail(){
+    $from = 'no-reply@mysite.com';
+    $to = 'chloehj15@gmail.com';
+    $email = new Email($from, $to, $subject, $body);
+    $email->send();
   }
 
   public function init() {

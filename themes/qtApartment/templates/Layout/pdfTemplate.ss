@@ -59,14 +59,13 @@
 			</div>
 				<% if $UploadedPics %>
 					<% loop $UploadedPics %>
-						<img src="$SetRatioSize(400,500).URL">
+						<img src="../../$SetRatioSize(400,500).URL">
 					<% end_loop %>
 				<% end_if %>
 				<% if $DamageRepair %><p>Damage & Repair: $DamageRepair</p><% end_if %>
 				<% if $SmokeAlarms %><p style="color:red;">*Smoke alarm needs to be replaced</p><% end_if %>
 
 			<% end_with %>
-
 	</article>
 		$Form
 		$CommentsForm

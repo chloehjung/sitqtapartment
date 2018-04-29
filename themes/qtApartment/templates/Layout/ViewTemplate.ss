@@ -5,7 +5,7 @@
 			<h1>Unit $Unit.ID</h1>
 			<h3>$InspectionDate</h3>
 			<% if $Member.currentUser.inGroup('Administrators')  %>
-			<div style="text-align:right"><a href="{$Top.Link}pdf/$ID">pdf</a><a href="$EditLink">Edit</a> |
+			<div style="text-align:right"><a href="{$Top.Link}pdf/$ID">pdf</a> | <a href="$EditLink">Edit</a> |
 			<a href="$DeleteLink">Delete</a>
 			</div>
 			<% end_if %>
@@ -71,8 +71,7 @@
 				<% if $SmokeAlarms %><p style="color:red;">*Smoke alarm needs to be replaced</p><% end_if %>
 
 			<% end_with %>
-
-	</article>
+		</article>
 		$Form
 		$CommentsForm
 </div>

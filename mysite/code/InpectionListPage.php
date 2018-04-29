@@ -1,7 +1,7 @@
 <?php
 
 use Dompdf\Dompdf;
-
+use Dompdf\Options;
 
 class InspectionListPage extends Page{
   private static $db = array(
@@ -62,12 +62,23 @@ class InspectionListPage_Controller extends Page_Controller{
     $id = $this->request->Param('ID');
     $viewDetails = Inspection::get()->byID($id);
     $dompdf = new Dompdf();
+    $dompdf->output();
     $dompdf->loadHTML($this->customise(new ArrayData(array(
       'Inspection' => $viewDetails
     )))->renderWith("pdfTemplate"));
+    $dompdf->set_option('isRemoteEnabled', TRUE);
+    $dompdf->set_option('debugKeepTemp', TRUE);
+    $dompdf->set_option('isHtml5ParserEnabled', TRUE);
     $dompdf->setPaper('A4', 'landscape');
     $dompdf->render();
     return $dompdf->stream();
+
+    // $inspectionPage = $InspectionListPage.viewpdf($id);
+    // $pdf = new SS_PDF();
+    // $html = $pdf::getHtml($inspectionPage);
+    // $pdf->add($html);
+    // return $pdf->save('hi.pdf');
+
   }
 
   public function init() {

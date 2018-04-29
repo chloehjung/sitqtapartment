@@ -73,12 +73,6 @@ class InspectionListPage_Controller extends Page_Controller{
     $dompdf->render();
     return $dompdf->stream();
 
-    // $inspectionPage = $InspectionListPage.viewpdf($id);
-    // $pdf = new SS_PDF();
-    // $html = $pdf::getHtml($inspectionPage);
-    // $pdf->add($html);
-    // return $pdf->save('hi.pdf');
-
   }
 
   public function init() {

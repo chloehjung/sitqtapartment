@@ -59,8 +59,8 @@
 			</div>
 				<% if $UploadedPics %>
 					<% loop $UploadedPics %>
-						<img src="../../$SetRatioSize(400,500).URL">
-						
+						<img class="uploaded-img" src="../$URL">
+
 						$URL
 					<% end_loop %>
 				<% end_if %>
@@ -75,6 +75,10 @@
 
 
 <style>
+
+.uploaded-img{
+	width:80%;
+}
 
 .blue-border{
 	border-radius: 5px;

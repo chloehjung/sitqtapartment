@@ -149,6 +149,10 @@ input[type="submit"], .Actions .action{
 	width:100%!important;
 }
 
+.uploaded-img{
+	width:80%;
+}
+
 
 
 /**

@@ -60,8 +60,6 @@
 				<% if $UploadedPics %>
 					<% loop $UploadedPics %>
 						<img class="uploaded-img" src="../$URL">
-
-						$URL
 					<% end_loop %>
 				<% end_if %>
 				<% if $DamageRepair %><p>Damage & Repair: $DamageRepair</p><% end_if %>

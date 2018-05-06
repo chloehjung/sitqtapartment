@@ -15,7 +15,7 @@ class InspectionListPage_Controller extends Page_Controller{
     'view',
     'delete',
     'unit',
-    'pdf'
+    'mailpdf'
   );
 
   public function GetAllInspections($unit = null){
@@ -59,7 +59,7 @@ class InspectionListPage_Controller extends Page_Controller{
     )))->renderWith(array("ViewTemplate","Page"));
   }
 
-  public function pdf(){
+  public function mailpdf(){
     $id = $this->request->Param('ID');
     $viewDetails = Inspection::get()->byID($id);
     $dompdf = new Dompdf();
@@ -72,14 +72,20 @@ class InspectionListPage_Controller extends Page_Controller{
     $dompdf->set_option('isHtml5ParserEnabled', TRUE);
     $dompdf->setPaper('A4', 'landscape');
     $dompdf->render();
-    return $dompdf->stream();
-  }
 
-  public function mail(){
+    $unit = Unit::get()->byID($viewDetails->UnitID);
+    $emailTo = $unit->getStudentEmails();
+
     $from = 'no-reply@mysite.com';
-    $to = 'chloehj15@gmail.com';
+    $to = $emailTo;
+    $subject = 'Inspection result for Unit'.$id.' on '.$viewDetails->InspectionDate;
+    $body = 'Hi there, Please see the file attached.';
     $email = new Email($from, $to, $subject, $body);
+    $email->attachFileFromString($dompdf->output(), 'Unit'.$id.$viewDetails->InspectionDate.'.pdf');
     $email->send();
+
+    $this->redirectBack();
+    // return $dompdf->stream();
   }
 
   public function init() {

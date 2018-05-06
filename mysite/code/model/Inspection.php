@@ -134,18 +134,6 @@ class Inspection extends DataObject {
     return $str;
   }
 
-  public function pdf(){
-    $id = $this->ID;
-    $viewDetails = Inspection::get()->byID($id);
-    $dompdf = new Dompdf();
-    $dompdf->loadHTML($this->customise(new ArrayData(array(
-      'Inspection' => $viewDetails
-    )))->renderWith("ViewTemplate"));
-    $dompdf->setPaper('A4', 'landscape');
-    $dompdf->render();
-    $dompdf->stream();
-  }
-
   public function IsAdmin(){
     False;
     if(Member::currentUser()->inGroup('Inspection-admin')){

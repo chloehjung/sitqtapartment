@@ -20,17 +20,52 @@ class Unit extends DataObject{
         $this->StudentEmails(),
         GridFieldConfig_RecordEditor::create()
       ));
-    $fields->addFieldToTab('Root.Main',
-      new GridField(
-        'Inspections',
-        'Inspections',
-        $this->Inspections(),
-        GridFieldConfig_RecordViewer::create()
-      ));
     return $fields;
   }
   private static $summary_fields = array(
     'UnitNum' => 'UnitNum'
   );
+
+  public function getStudentEmails(){
+    $unitNum = $this->UnitNum;
+    $str = "";
+    $emails= StudentEmail::get()->filter(array(
+      'UnitID'=>$unitNum
+    ));
+    foreach($emails as $email) {
+      $str .= $email->Email;
+      $str .= ", ";
+    }
+    // echo $str;
+    return $str;
+  }
+
+  public function getStudentNames(){
+    $unitNum = $this->UnitNum;
+    $str = "";
+    $emails= StudentEmail::get()->filter(array(
+      'UnitID'=>$unitNum
+    ));
+    foreach($emails as $email) {
+      $str .= $email->Name;
+      $str .= "<br>";
+    }
+    // echo $str;
+    return $str;
+  }
+
+  public function getStudentEmailsWithSpace(){
+    $unitNum = $this->UnitNum;
+    $str = "";
+    $emails= StudentEmail::get()->filter(array(
+      'UnitID'=>$unitNum
+    ));
+    foreach($emails as $email) {
+      $str .= $email->Email;
+      $str .= "<br>";
+    }
+    // echo $str;
+    return $str;
+  }
 
 }

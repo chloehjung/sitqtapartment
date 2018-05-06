@@ -2,6 +2,7 @@
 
 class StudentEmail extends DataObject{
   private static $db = array(
+    'Name'=>'Text',
     'Email'=>'Text'
   );
 
@@ -17,6 +18,7 @@ class StudentEmail extends DataObject{
   }
 
   private static $summary_fields = array(
+    'Name'=>'Name',
     'Email' => 'Email'
   );
 

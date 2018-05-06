@@ -29,4 +29,18 @@ class Page_Controller extends ContentController
         // You can include any CSS or JS required by your project here.
         // See: http://doc.silverstripe.org/framework/en/reference/requirements
     }
+
+    // public function StatusMessage() {
+    // 	if(Session::get('ActionMessage')) {
+    // 		$message = Session::get('ActionMessage');
+    // 		$status = Session::get('ActionStatus');
+    //
+    // 		Session::clear('ActionStatus');
+    // 		Session::clear('ActionMessage');
+    //
+    // 		return new ArrayData(array('Message' => $message, 'Status' => $status));
+    // 	}
+    //
+    // 	return false;
+    // }
 }

@@ -100,6 +100,7 @@ input[type="submit"], .Actions .action{
 	width: 100%;
 	position: relative;
 	margin-top:22px;
+	margin-bottom: 20px;
 }
 
 .blue-border h2{
@@ -153,6 +154,10 @@ input[type="submit"], .Actions .action{
 	width:80%;
 }
 
+.uploaded-img{
+	border:none;
+	padding:20px 0;
+}
 
 
 /**

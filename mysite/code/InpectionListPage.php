@@ -76,6 +76,9 @@ class InspectionListPage_Controller extends Page_Controller{
 
     $unit = Unit::get()->byID($viewDetails->UnitID);
     $emailTo = $unit->getStudentEmails();
+    // if($emailTo==""){
+    //   return
+    // }
 
     $from = 'no-reply@mysite.com';
     $to = $emailTo;
@@ -84,6 +87,9 @@ class InspectionListPage_Controller extends Page_Controller{
     $email = new Email($from, $to, $subject, $body);
     $email->attachFileFromString($dompdf->output(), 'Unit'.$id.$viewDetails->InspectionDate.'.pdf');
     $email->send();
+    // Session::set('ActionStatus', 'success');
+    // Session::set('ActionMessage', 'Email Sent');
+
 
     $this->redirectBack();
     // return $dompdf->stream();

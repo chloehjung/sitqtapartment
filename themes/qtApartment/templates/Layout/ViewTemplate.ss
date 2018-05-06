@@ -1,5 +1,12 @@
 <div class="content-container unit size3of4 lastUnit">
 	<article>
+		<%-- <% if StatusMessage() %>
+			<% control StatusMessage() %>
+			<div class="message-$Status">
+				$Message
+			</div>
+			<% end_control %>
+		<% end_if %> --%>
 
 		<% with Inspection %>
 			<h1>Unit $Unit.ID</h1>
@@ -13,53 +20,38 @@
 
 			<div class="blue-border row">
 				<h2>Lounge</h2>
-				<div class="col-md-5">
+				<div class="col">
 					$ListLoungeCleaning<br/>
 					<% if $Lounge.LoungeComment %><p style="font-weight:bold;">Comment: $Lounge.LoungeComment</p><% end_if %>
-				</div>
-				<div class="col-md-7">
-					<p>Pictures:</p>
 				</div>
 
 			</div>
 			<div class="blue-border row">
 				<h2>Kitchen</h2>
-				<div class="col-md-5">
+				<div class="col">
 					$ListKitchenCleaning<br/>
 					<% if $Kitchen.KitchenComment %><p style="font-weight:bold;">Comment: $Kitchen.KitchenComment</p><% end_if %>
-				</div>
-				<div class="col-md-7">
-					<p>Pictures:</p>
 				</div>
 			</div>
 			<div class="blue-border row">
 				<h2>Bedroom1</h2>
-				<div class="col-md-5">
+				<div class="col">
 					$ListRoomCleaning('Bedroom1')<br/>
 					<% if $Bedroom1.Comment %><p style="font-weight:bold;">Comment: $Bedroom1.Comment</p><% end_if %>
-				</div>
-				<div class="col-md-7">
-					<p>Pictures:</p>
 				</div>
 			</div>
 			<div class="blue-border row">
 				<h2>Bedroom2</h2>
-				<div class="col-md-5">
+				<div class="col">
 					$ListRoomCleaning('Bedroom2')<br/>
 					<% if $Bedroom2.Comment %><p style="font-weight:bold;">Comment: $Bedroom2.Comment</p><% end_if %>
-				</div>
-				<div class="col-md-7">
-					<p>Pictures:</p>
 				</div>
 			</div>
 			<div class="blue-border row">
 				<h2>Bedroom3</h2>
-				<div class="col-md-5">
+				<div class="col">
 					$ListRoomCleaning('Bedroom3')<br/>
 					<% if $Bedroom3.Comment %><p style="font-weight:bold;">Comment: $Bedroom3.Comment</p><% end_if %>
-				</div>
-				<div class="col-md-7">
-					<p>Pictures:</p>
 				</div>
 			</div>
 				<% if $UploadedPics %>

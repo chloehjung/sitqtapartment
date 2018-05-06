@@ -133,6 +133,8 @@ class AddInspectionPage_Controller extends Page_Controller{
     $inspection->Bedroom2ID = $bedroom2->ID;
     $inspection->Bedroom3ID = $bedroom3->ID;
     $inspection->write();
+    // Session::set('ActionStatus', 'success');
+    // Session::set('ActionMessage', 'Inspection Added');
     $form->addErrorMessage('Form','Inspection Added', 'good');
     $this->redirectBack();
   }

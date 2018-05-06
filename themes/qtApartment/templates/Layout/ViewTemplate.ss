@@ -5,7 +5,7 @@
 			<h1>Unit $Unit.ID</h1>
 			<h3>$InspectionDate</h3>
 			<% if $Member.currentUser.inGroup('Administrators')  %>
-			<div style="text-align:right"><a href="{$Top.Link}mailpdf/$ID">pdf</a> | <a href="$EditLink">Edit</a> |
+			<div style="text-align:right"><a href="{$Top.Link}downloadpdf/$ID">Download PDF</a> | <a href="{$Top.Link}mailpdf/$ID">Mail</a> | <a href="$EditLink">Edit</a> |
 			<a href="$DeleteLink">Delete</a>
 			</div>
 			<% end_if %>

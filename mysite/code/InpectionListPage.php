@@ -15,15 +15,16 @@ class InspectionListPage_Controller extends Page_Controller{
     'view',
     'delete',
     'unit',
-    'mailpdf'
+    'mailpdf',
+    'downloadpdf'
   );
 
   public function GetAllInspections($unit = null){
     $id = $this->request->Param('ID');
     if ($id !=null){
-      return Inspection::get()->filter(array('Unit.UnitNum'=>$id));
+      return Inspection::get()->filter(array('Unit.UnitNum'=>$id))->sort('InspectionDate','DESC');
     }
-    return Inspection::get();
+    return Inspection::get()->sort('InspectionDate','DESC');
   }
 
   public function unit(){
@@ -86,6 +87,22 @@ class InspectionListPage_Controller extends Page_Controller{
 
     $this->redirectBack();
     // return $dompdf->stream();
+  }
+
+  public function downloadpdf(){
+    $id = $this->request->Param('ID');
+    $viewDetails = Inspection::get()->byID($id);
+    $dompdf = new Dompdf();
+    $dompdf->output();
+    $dompdf->loadHTML($this->customise(new ArrayData(array(
+      'Inspection' => $viewDetails
+    )))->renderWith("pdfTemplate"));
+    $dompdf->set_option('isRemoteEnabled', TRUE);
+    $dompdf->set_option('debugKeepTemp', TRUE);
+    $dompdf->set_option('isHtml5ParserEnabled', TRUE);
+    $dompdf->setPaper('A4', 'landscape');
+    $dompdf->render();
+    $dompdf->stream('Unit'.$id.'-'.$viewDetails->InspectionDate.'.pdf');
   }
 
   public function init() {

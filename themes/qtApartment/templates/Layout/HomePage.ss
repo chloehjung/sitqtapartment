@@ -3,7 +3,7 @@
     <% loop Menu(1) %>
       <% if $Title=='List' %>
         <% loop Children %>
-          <div class="col-md-4 col-sm-6 box-holder">
+          <div class="col-md-6 box-holder">
             <a href="$Link">
               <div class="box text-center">
                 <i class="$Icon" style="font-size:50px;"></i>
@@ -15,7 +15,7 @@
       <% else_if $Title=='Home' %>
 
       <% else %>
-      <div class="col-md-4 col-sm-6 box-holder">
+      <div class="col-md-6 box-holder">
         <a href="$Link">
           <div class="box text-center">
             <i class="$Icon" style="font-size:50px;"></i>

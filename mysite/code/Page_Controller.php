@@ -30,17 +30,20 @@ class Page_Controller extends ContentController
         // See: http://doc.silverstripe.org/framework/en/reference/requirements
     }
 
-    // public function StatusMessage() {
-    // 	if(Session::get('ActionMessage')) {
-    // 		$message = Session::get('ActionMessage');
-    // 		$status = Session::get('ActionStatus');
-    //
-    // 		Session::clear('ActionStatus');
-    // 		Session::clear('ActionMessage');
-    //
-    // 		return new ArrayData(array('Message' => $message, 'Status' => $status));
-    // 	}
-    //
-    // 	return false;
-    // }
+    public function StatusMessage() {
+    	if(Session::get('ActionMessage')) {
+    		$message = Session::get('ActionMessage');
+    		$status = Session::get('ActionStatus');
+
+    		Session::clear('ActionStatus');
+    		Session::clear('ActionMessage');
+
+        $str='';
+        $str.='<div class="message-'.$status.'">';
+        $str.='<p>'.$message.'</p></div>';
+        return $str;
+    	}
+
+    	return false;
+    }
 }

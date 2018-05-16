@@ -151,7 +151,7 @@ input[type="submit"], .Actions .action{
 }
 
 .uploaded-img{
-	width:80%;
+	/* width:80%; */
 }
 
 .uploaded-img{
@@ -159,6 +159,29 @@ input[type="submit"], .Actions .action{
 	padding:20px 0;
 }
 
+.message-success{
+	background-color: #1a2930;
+	border-radius: 4px;
+	color:white;
+	padding:2px 5px;
+}
+
+.message-success p{
+	font-weight: bold;
+	margin: 0;
+}
+
+.message-error{
+	background-color: #b80000;
+	border-radius: 4px;
+	color:white;
+	padding:2px 5px;
+}
+
+.message-error p{
+	font-weight: bold;
+	margin: 0;
+}
 
 /**
 ----Responsive----

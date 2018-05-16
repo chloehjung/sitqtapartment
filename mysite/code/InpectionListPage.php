@@ -76,9 +76,14 @@ class InspectionListPage_Controller extends Page_Controller{
 
     $unit = Unit::get()->byID($viewDetails->UnitID);
     $emailTo = $unit->getStudentEmails();
-    // if($emailTo==""){
-    //   return
-    // }
+    if($emailTo==""){
+      Session::set('ActionStatus', 'error');
+      Session::set('ActionMessage', 'There are no emails stored for this unit');
+      $viewDetails = Inspection::get()->byID($id);
+      return $this->customise(new ArrayData(array(
+        'Inspection' => $viewDetails
+      )))->renderWith(array("ViewTemplate","Page"));
+    }
 
     $from = 'no-reply@mysite.com';
     $to = $emailTo;
@@ -87,8 +92,8 @@ class InspectionListPage_Controller extends Page_Controller{
     $email = new Email($from, $to, $subject, $body);
     $email->attachFileFromString($dompdf->output(), 'Unit'.$id.$viewDetails->InspectionDate.'.pdf');
     $email->send();
-    // Session::set('ActionStatus', 'success');
-    // Session::set('ActionMessage', 'Email Sent');
+    Session::set('ActionStatus', 'success');
+    Session::set('ActionMessage', 'Email Sent');
 
 
     $this->redirectBack();

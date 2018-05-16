@@ -1,12 +1,8 @@
 <div class="content-container unit size3of4 lastUnit">
 	<article>
-		<%-- <% if StatusMessage() %>
-			<% control StatusMessage() %>
-			<div class="message-$Status">
-				$Message
-			</div>
-			<% end_control %>
-		<% end_if %> --%>
+		<% if StatusMessage() %>
+			$StatusMessage
+		<% end_if %>
 
 		<% with Inspection %>
 			<h1>Unit $Unit.ID</h1>
@@ -56,7 +52,7 @@
 			</div>
 				<% if $UploadedPics %>
 					<% loop $UploadedPics %>
-						<img class="uploaded-img" src="$URL">
+						<img class="uploaded-img" src="$ScaleWidth(400).URL">
 					<% end_loop %>
 				<% end_if %>
 				<% if $DamageRepair %><p>Damage & Repair: $DamageRepair</p><% end_if %>

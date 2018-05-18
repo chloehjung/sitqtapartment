@@ -111,7 +111,7 @@ class InspectionListPage_Controller extends Page_Controller{
     $dompdf->set_option('isRemoteEnabled', TRUE);
     $dompdf->set_option('debugKeepTemp', TRUE);
     $dompdf->set_option('isHtml5ParserEnabled', TRUE);
-    $dompdf->setPaper('A4', 'landscape');
+    $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
     $dompdf->stream('Unit'.$id.'-'.$viewDetails->InspectionDate.'.pdf');
   }

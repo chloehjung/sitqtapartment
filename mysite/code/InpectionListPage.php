@@ -87,7 +87,7 @@ class InspectionListPage_Controller extends Page_Controller{
 
     $from = 'no-reply@mysite.com';
     $to = $emailTo;
-    $subject = 'Inspection result for Unit'.$id.' on '.$viewDetails->InspectionDate;
+    $subject = 'Inspection result for Unit'.$viewDetails->UnitID.' on '.$viewDetails->InspectionDate;
     $body = 'Hi there, Please see the file attached.';
     $email = new Email($from, $to, $subject, $body);
     $email->attachFileFromString($dompdf->output(), 'Unit'.$id.$viewDetails->InspectionDate.'.pdf');
@@ -113,7 +113,7 @@ class InspectionListPage_Controller extends Page_Controller{
     $dompdf->set_option('isHtml5ParserEnabled', TRUE);
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
-    $dompdf->stream('Unit'.$id.'-'.$viewDetails->InspectionDate.'.pdf');
+    $dompdf->stream('Unit'.$viewDetails->UnitID.'-'.$viewDetails->InspectionDate.'.pdf');
   }
 
   public function init() {

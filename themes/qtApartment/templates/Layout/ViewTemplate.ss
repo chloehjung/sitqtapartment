@@ -16,17 +16,31 @@
 
 			<div class="blue-border row">
 				<h2>Lounge</h2>
-				<div class="col">
+				<div class="col-md-6">
 					$ListLoungeCleaning<br/>
 					<% if $Lounge.LoungeComment %><p style="font-weight:bold;">Comment: $Lounge.LoungeComment</p><% end_if %>
+				</div>
+				<div class="col-md-6">
+					<% if $LoungePics %>
+						<% loop $LoungePics %>
+							<img style="width:100%" src="$ScaleWidth(900).URL" >
+						<% end_loop %>
+					<% end_if %>
 				</div>
 
 			</div>
 			<div class="blue-border row">
 				<h2>Kitchen</h2>
-				<div class="col">
+				<div class="col-md-6">
 					$ListKitchenCleaning<br/>
 					<% if $Kitchen.KitchenComment %><p style="font-weight:bold;">Comment: $Kitchen.KitchenComment</p><% end_if %>
+				</div>
+				<div class="col-md-6">
+					<% if $KitchenPics %>
+						<% loop $KitchenPics %>
+							<img style="width:100%" src="$ScaleWidth(900).URL" >
+						<% end_loop %>
+					<% end_if %>
 				</div>
 			</div>
 			<div class="blue-border row">
@@ -35,12 +49,26 @@
 					$ListRoomCleaning('Bedroom1')<br/>
 					<% if $Bedroom1.Comment %><p style="font-weight:bold;">Comment: $Bedroom1.Comment</p><% end_if %>
 				</div>
+				<div class="col-md-6">
+					<% if $Bedroom1Pics %>
+						<% loop $Bedroom1Pics %>
+							<img style="width:100%" src="$ScaleWidth(900).URL" >
+						<% end_loop %>
+					<% end_if %>
+				</div>
 			</div>
 			<div class="blue-border row">
 				<h2>Bedroom2</h2>
 				<div class="col">
 					$ListRoomCleaning('Bedroom2')<br/>
 					<% if $Bedroom2.Comment %><p style="font-weight:bold;">Comment: $Bedroom2.Comment</p><% end_if %>
+				</div>
+				<div class="col-md-6">
+					<% if $Bedroom2Pics %>
+						<% loop $Bedroom2Pics %>
+							<img style="width:100%" src="$ScaleWidth(900).URL" >
+						<% end_loop %>
+					<% end_if %>
 				</div>
 			</div>
 			<div class="blue-border row">
@@ -49,12 +77,14 @@
 					$ListRoomCleaning('Bedroom3')<br/>
 					<% if $Bedroom3.Comment %><p style="font-weight:bold;">Comment: $Bedroom3.Comment</p><% end_if %>
 				</div>
+				<div class="col-md-6">
+					<% if $Bedroom3Pics %>
+						<% loop $Bedroom3Pics %>
+							<img style="width:100%" src="$ScaleWidth(900).URL" >
+						<% end_loop %>
+					<% end_if %>
+				</div>
 			</div>
-				<% if $UploadedPics %>
-					<% loop $UploadedPics %>
-						<img class="uploaded-img" src="$ScaleWidth(400).URL">
-					<% end_loop %>
-				<% end_if %>
 				<% if $DamageRepair %><p>Damage & Repair: $DamageRepair</p><% end_if %>
 				<% if $SmokeAlarms %><p style="color:red;">*Smoke alarm needs to be replaced</p><% end_if %>
 

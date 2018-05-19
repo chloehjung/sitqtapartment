@@ -26,7 +26,11 @@ class Inspection extends DataObject {
   );
 
   public static $many_many = array(
-    'UploadedPics'=>'Image'
+    'LoungePics'=>'Image',
+    'KitchenPics'=>'Image',
+    'Bedroom1Pics'=>'Image',
+    'Bedroom2Pics'=>'Image',
+    'Bedroom3Pics'=>'Image'
   );
 
   public function GetPictures(){

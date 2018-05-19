@@ -25,10 +25,14 @@ class AddInspectionPage_Controller extends Page_Controller{
       foreach($fieldsLounge as $field){
         $field->OuterClass = 'form-group col-md-3';
       }
+      $fieldsLounge->insertAfter('LoungeComment',UploadField::create('LoungePics', 'LoungePics')
+                                                ->setFolderName('Lounge Pictures')
+                                                ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif')));
+      $fieldsLounge->fieldByName('LoungePics')->OuterClass = 'form-group col-md-12';
       $fieldsLounge->fieldByName('LoungeComment')->OuterClass = 'form-group col-md-12 bottom-comment';
       $fieldsLounge->insertBefore('LoungeFloor', LiteralField::create('divider','<div class="row blue-border">'));
       $fieldsLounge->insertBefore('LoungeFloor', HeaderField::create('2', 'Lounge'));
-      $fieldsLounge->insertAfter('LoungeComment', LiteralField::create('divider','</div>'));
+      $fieldsLounge->insertAfter('LoungePics', LiteralField::create('divider','</div>'));
       // $fieldsLounge = new CompositeField($fieldsLounge);
       // $fieldsLounge->OuterClass = '';
 
@@ -37,10 +41,14 @@ class AddInspectionPage_Controller extends Page_Controller{
       foreach($fieldsKitchen as $field){
         $field->OuterClass = 'form-group col-md-3';
       }
+      $fieldsKitchen->insertAfter('KitchenComment',UploadField::create('KitchenPics', 'KitchenPics')
+                                                  ->setFolderName('Kitchen Pictures')
+                                                  ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif')));
+      $fieldsKitchen->fieldByName('KitchenPics')->OuterClass = 'form-group col-md-12';
       $fieldsKitchen->fieldByName('KitchenComment')->OuterClass = 'form-group col-md-12 bottom-comment';
       $fieldsKitchen->insertBefore('Oven', LiteralField::create('divider','<div class="row blue-border">'));
       $fieldsKitchen->insertBefore('Oven', HeaderField::create('2', 'Kitchen areas'));
-      $fieldsKitchen->insertAfter('KitchenComment', LiteralField::create('divider','</div>'));
+      $fieldsKitchen->insertAfter('KitchenPics', LiteralField::create('divider','</div>'));
       // $fieldsKitchen = new CompositeField($fieldsKitchen);
       // $fieldsKitchen->OuterClass = '';
 
@@ -50,10 +58,14 @@ class AddInspectionPage_Controller extends Page_Controller{
         $field->Name = "BR1[".$field->Name."]";
         $field->OuterClass = 'form-group col-md-3';
       }
+      $fieldsbr1->insertAfter('BR1[Comment]',UploadField::create('Bedroom1Pics', 'Bedroom1Pics')
+                                                ->setFolderName('Bedroom1 Pictures')
+                                                ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif')));
+      $fieldsbr1->fieldByName('Bedroom1Pics')->OuterClass = 'form-group col-md-12';
       $fieldsbr1->fieldByName('BR1[Comment]')->OuterClass = 'form-group col-md-12 bottom-comment';
       $fieldsbr1->insertBefore('BR1[Floor]', LiteralField::create('divider','<div class="row blue-border">'));
       $fieldsbr1->insertBefore('BR1[Floor]', HeaderField::create('2', 'Bedroom 1'));
-      $fieldsbr1->insertAfter('BR1[Comment]', LiteralField::create('divider','</div>'));
+      $fieldsbr1->insertAfter('Bedroom1Pics', LiteralField::create('divider','</div>'));
       // $fieldsbr1 = new CompositeField($fieldsbr1);
       // $fieldsbr1->OuterClass = '';
 
@@ -62,10 +74,14 @@ class AddInspectionPage_Controller extends Page_Controller{
         $field->Name = "BR2[".$field->Name."]";
         $field->OuterClass = 'form-group col-md-3';
       }
+      $fieldsbr2->insertAfter('BR2[Comment]',UploadField::create('Bedroom2Pics', 'Bedroom2Pics')
+                                                ->setFolderName('Bedroom2 Pictures')
+                                                ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif')));
+      $fieldsbr2->fieldByName('Bedroom2Pics')->OuterClass = 'form-group col-md-12';
       $fieldsbr2->fieldByName('BR2[Comment]')->OuterClass = 'form-group col-md-12 bottom-comment';
       $fieldsbr2->insertBefore('BR2[Floor]', LiteralField::create('divider','<div class="row blue-border">'));
       $fieldsbr2->insertBefore('BR2[Floor]', HeaderField::create('2', 'Bedroom 2'));
-      $fieldsbr2->insertAfter('BR2[Comment]', LiteralField::create('divider','</div>'));
+      $fieldsbr2->insertAfter('Bedroom2Pics', LiteralField::create('divider','</div>'));
 
 
       $fieldsbr3 = singleton('Bedroom')->getFrontEndFields();
@@ -73,10 +89,14 @@ class AddInspectionPage_Controller extends Page_Controller{
         $field->Name = "BR3[".$field->Name."]";
         $field->OuterClass = 'form-group col-md-3';
       }
+      $fieldsbr3->insertAfter('BR3[Comment]',UploadField::create('Bedroom3Pics', 'Bedroom3Pics')
+                                                ->setFolderName('Bedroom3 Pictures')
+                                                ->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif')));
+      $fieldsbr3->fieldByName('Bedroom3Pics')->OuterClass = 'form-group col-md-12';
       $fieldsbr3->fieldByName('BR3[Comment]')->OuterClass = 'form-group col-md-12 bottom-comment';
       $fieldsbr3->insertBefore('BR3[Floor]', LiteralField::create('divider','<div class="row blue-border">'));
       $fieldsbr3->insertBefore('BR3[Floor]', HeaderField::create('2', 'Bedroom 3'));
-      $fieldsbr3->insertAfter('BR3[Comment]', LiteralField::create('divider','</div>'));
+      $fieldsbr3->insertAfter('Bedroom3Pics', LiteralField::create('divider','</div>'));
 
       $fields->merge($fieldsLounge);
       $fields->merge($fieldsKitchen);
@@ -86,10 +106,7 @@ class AddInspectionPage_Controller extends Page_Controller{
 
       $fields->push(new CheckboxField('SmokeAlarms', 'Smoke alarm needs fixed?'));
       $fields->push(new TextareaField('DamageRepair','Any damages & repairs'));
-      $fields->push($uploadField = new UploadField('UploadedPics', 'Pictures'));
-      $uploadField->setFolderName('Uploaded inspection pictures');
-      $uploadField->setAllowedExtensions(array('jpg', 'jpeg', 'png', 'gif'));
-      $fields->insertAfter('UploadedPics', LiteralField::create('divider','<div id="details"></div>'));
+      $fields->insertAfter('DamageRepair', LiteralField::create('divider','<div id="details"></div>'));
 
 
       $actions = FieldList::create(

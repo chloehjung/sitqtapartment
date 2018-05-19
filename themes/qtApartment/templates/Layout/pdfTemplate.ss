@@ -8,12 +8,18 @@
 
 			<div class="blue-border row">
 				<h2>Lounge</h2>
-				<div class="col-md-5">
+				<div class="col-md-5 full-width" style="width:100%;">
 					$ListLoungeCleaning<br/>
 					<% if $Lounge.LoungeComment %><p style="font-weight:bold;">Comment: $Lounge.LoungeComment</p><% end_if %>
 				</div>
-				<div class="col-md-7">
-					<p>Pictures:</p>
+				<p>Pictures:</p>
+				<br>
+				<div class="col-md-7 pic-container">
+					<% if $LoungePics %>
+						<% loop $LoungePics %>
+							<img src="../$ScaleWidth(900).URL">
+						<% end_loop %>
+					<% end_if %>
 				</div>
 
 			</div>
@@ -23,8 +29,14 @@
 					$ListKitchenCleaning<br/>
 					<% if $Kitchen.KitchenComment %><p style="font-weight:bold;">Comment: $Kitchen.KitchenComment</p><% end_if %>
 				</div>
-				<div class="col-md-7">
-					<p>Pictures:</p>
+				<p>Pictures:</p>
+				<br>
+				<div class="col-md-7 pic-container">
+					<% if $KitchenPics %>
+						<% loop $KitchenPics %>
+							<img src="../$ScaleWidth(900).URL">
+						<% end_loop %>
+					<% end_if %>
 				</div>
 			</div>
 			<div class="blue-border row">
@@ -33,8 +45,14 @@
 					$ListRoomCleaning('Bedroom1')<br/>
 					<% if $Bedroom1.Comment %><p style="font-weight:bold;">Comment: $Bedroom1.Comment</p><% end_if %>
 				</div>
-				<div class="col-md-7">
-					<p>Pictures:</p>
+				<p>Pictures:</p>
+				<br>
+				<div class="col-md-7 pic-container">
+					<% if $Bedroom1Pics %>
+						<% loop $Bedroom1Pics %>
+							<img src="../$ScaleWidth(900).URL">
+						<% end_loop %>
+					<% end_if %>
 				</div>
 			</div>
 			<div class="blue-border row">
@@ -43,8 +61,14 @@
 					$ListRoomCleaning('Bedroom2')<br/>
 					<% if $Bedroom2.Comment %><p style="font-weight:bold;">Comment: $Bedroom2.Comment</p><% end_if %>
 				</div>
-				<div class="col-md-7">
-					<p>Pictures:</p>
+				<p>Pictures:</p>
+				<br>
+				<div class="col-md-7 pic-container">
+					<% if $Bedroom2Pics %>
+						<% loop $Bedroom2Pics %>
+							<img src="../$ScaleWidth(900).URL">
+						<% end_loop %>
+					<% end_if %>
 				</div>
 			</div>
 			<div class="blue-border row">
@@ -53,15 +77,16 @@
 					$ListRoomCleaning('Bedroom3')<br/>
 					<% if $Bedroom3.Comment %><p style="font-weight:bold;">Comment: $Bedroom3.Comment</p><% end_if %>
 				</div>
-				<div class="col-md-7">
-					<p>Pictures:</p>
+				<p>Pictures:</p>
+				<br>
+				<div class="col-md-7 pic-container">
+					<% if $Bedroom3Pics %>
+						<% loop $Bedroom3Pics %>
+							<img src="../$ScaleWidth(900).URL">
+						<% end_loop %>
+					<% end_if %>
 				</div>
 			</div>
-				<% if $UploadedPics %>
-					<% loop $UploadedPics %>
-						<img class="uploaded-img" src="../$URL">
-					<% end_loop %>
-				<% end_if %>
 				<% if $DamageRepair %><p>Damage & Repair: $DamageRepair</p><% end_if %>
 				<% if $SmokeAlarms %><p style="color:red;">*Smoke alarm needs to be replaced</p><% end_if %>
 
@@ -118,6 +143,17 @@
 
 .blue-border .styled-table{
 	width:100%!important;
+}
+
+.pic-container{
+	width:100%;
+	text-align: center;
+}
+
+.pic-container img{
+	width:40%;
+	padding:10px;
+	display:inline-block;
 }
 
 </style>
